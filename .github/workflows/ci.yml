@@ -41,7 +41,7 @@ jobs:
   notify-on-failure:
     needs: build
     runs-on: ubuntu-latest
-    if: failure()
+    if: ${{ needs.build.result == 'failure' }}
 
     steps:
       - name: Send email notification on failure
