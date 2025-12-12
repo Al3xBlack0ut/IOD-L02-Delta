@@ -6,5 +6,7 @@ pl\put\poznan\BuildingInfo\data\structure\Location.class
 pl\put\poznan\BuildingInfo\data\structure\Floor.class
 pl\put\poznan\BuildingInfo\data\structure\Room.class
 pl\put\poznan\BuildingInfo\data\structure\LocationUpdater.class
+pl\put\poznan\transformer\model\TransformRequest.class
 pl\put\poznan\BuildingInfo\data\structure\LocationDeleter.class
+pl\put\poznan\transformer\model\TransformResponse.class
 pl\put\poznan\BuildingInfo\data\structure\LocationController.class

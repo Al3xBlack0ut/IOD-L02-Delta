@@ -39,7 +39,16 @@ class LocationSelecter{
         if(found == null) return -1;
         return found.getLight();
     }
-
+    float getLightperM2(){
+        Location found =  rootLocation.findLocationById(id);
+        if(found == null) return -1;
+        return found.getLight()/found.getArea();
+    }
+    float getHeatingperM3(){
+        Location found =  rootLocation.findLocationById(id);
+        if(found == null) return -1;
+        return found.getHeating()/found.getCube();
+    }
     String getLocationName(){
         Location location = rootLocation.findLocationById(id);
         if(location == null) return null;
@@ -356,5 +365,14 @@ public class LocationController {
     public float getLight(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
         return locationSelecter.getLight();
+    }
+
+    public float getLightperM2(int id){
+        LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
+        return locationSelecter.getLightperM2();
+    }
+    public float getHeatingperM3(int id){
+        LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
+        return locationSelecter.getHeatingperM3();
     }
 }

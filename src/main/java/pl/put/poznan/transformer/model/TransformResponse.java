@@ -5,27 +5,27 @@ package pl.put.poznan.transformer.model;
  * Zwraca po prostu przekształcony text
  */
 public class TransformResponse {
-    private String transformedText;
+    private float wynik;
 
     public TransformResponse() {
     }
 
-    public TransformResponse(String transformedText) {
-        this.transformedText = transformedText;
+    public TransformResponse(float wynik) {
+        this.wynik = wynik;
     }
 
-    public String getTransformedText() {
-        return transformedText;
+    public float getWynik() {
+        return wynik;
     }
 
-    public void setTransformedText(String transformedText) {
-        this.transformedText = transformedText;
+    public void setWynik(float wynik) {
+        this.wynik = wynik;
     }
 
     @Override
     public String toString() {
         return "TransformResponse{" +
-                "transformedText='" + transformedText + '\'' +
+                "Wynik='" + Float.toString(wynik) + '\'' +
                 '}';
     }
 }

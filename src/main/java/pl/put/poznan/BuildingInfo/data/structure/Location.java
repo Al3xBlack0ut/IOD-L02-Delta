@@ -182,6 +182,9 @@ public class Location {
         Map<String, Float> stats = getSublocationStatsCascade(this);
         return  stats.get("light");
     }
+    public String getName(){
+        return  name;
+    }
     public float getLightperM2(){
         return this.getLight()/this.getArea();
     }
