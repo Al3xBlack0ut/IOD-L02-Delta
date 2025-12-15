@@ -367,10 +367,21 @@ public class LocationController {
         return locationSelecter.getLight();
     }
 
+    /**
+     * Zwraca moc oświetlenia lokacji na metr kwadratowy.
+     * @param id - identyfikator Location.
+     * @return - moc oświetlenia obiektu Location podzielona przez jej powierzchnię.
+     */
     public float getLightperM2(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
         return locationSelecter.getLightperM2();
     }
+
+    /**
+     * Zwraca energię potrzebną na ogrzanie Location podzieloną przez jej kubaturę.
+     * @param id - identyfikator Location.
+     * @return - energia ogrzewania podzielona przez kubaturę obiektu Location.
+     */
     public float getHeatingperM3(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
         return locationSelecter.getHeatingperM3();
