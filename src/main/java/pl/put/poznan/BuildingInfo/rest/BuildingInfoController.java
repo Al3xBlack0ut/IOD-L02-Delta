@@ -3,7 +3,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.BuildingInfo.logic.BuildingInfo;
-import pl.put.poznan.BuildingInfo.data.structure.Location;
 import pl.put.poznan.BuildingInfo.data.structure.LocationController;
 import pl.put.poznan.transformer.model.TransformRequest;
 import pl.put.poznan.transformer.model.TransformResponse;
@@ -19,7 +18,7 @@ public class BuildingInfoController {
     private BuildingInfo baza=new BuildingInfo();
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     //public float get(@PathVariable int id,
-     //                         @RequestParam(value="operacje") String transform) {
+     //                         @RequesatParam(value="operacje") String transform) {
     public TransformResponse get(@RequestParam(value="id") int id,@RequestParam(value="Operacja") String transform) {
         // log the parameters
         logger.debug(Integer.toString(id));

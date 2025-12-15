@@ -6,7 +6,7 @@ package pl.put.poznan.BuildingInfo.data.structure;
  *
  * @author PiotrRem
  */
-public class Floor extends Location {
+class Floor extends Location {
     Floor(int id, String name) {
         super(id, name);
         this.type = LocationType.Floor;

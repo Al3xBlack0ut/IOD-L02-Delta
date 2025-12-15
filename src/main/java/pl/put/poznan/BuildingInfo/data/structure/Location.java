@@ -8,7 +8,7 @@ import java.util.*;
  * @author PiotrRem
  *
  */
-public class Location {
+class Location {
     /**
      * LocationType - typ wyliczeniowy używany, by orientować się, jak nisko w hierarchii obiektów Location zeszły algorytmy przeszukujące.
      */

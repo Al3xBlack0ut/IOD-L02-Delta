@@ -1,6 +1,5 @@
 package pl.put.poznan.BuildingInfo.logic;
 import pl.put.poznan.BuildingInfo.data.structure.LocationController;
-import pl.put.poznan.BuildingInfo.data.structure.Location;
 import pl.put.poznan.transformer.model.TransformRequest;
 import pl.put.poznan.transformer.model.TransformResponse;
 import java.util.ArrayList;
