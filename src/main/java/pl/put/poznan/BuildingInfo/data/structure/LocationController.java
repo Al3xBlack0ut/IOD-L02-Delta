@@ -183,13 +183,13 @@ public class LocationController {
 
     /**
      * Dodaje lokację do schematu. Na podstawie id nadrzędnego obiektu Location ustalany jest typ: Building, Floor, Room.
-     * @param id - unikalny identyfikator
-     * @param name - opcjonalna nazwa
-     * @param parent_id - id obiektu Location, w którym ma się znaleźć dodawany obiekt. Nie może to być id obiektu Room. Dla Building = 0
-     * @param area - powierzchnia Room
-     * @param cube - kubatura Room
-     * @param heating - energia ogrzewania Room
-     * @param light - moc oświetlenia Room
+     * @param id unikalny identyfikator
+     * @param name opcjonalna nazwa
+     * @param parent_id id obiektu Location, w którym ma się znaleźć dodawany obiekt. Nie może to być id obiektu Room. Jeżeli dodajemy Building, parent_id = 0
+     * @param area powierzchnia Room
+     * @param cube kubatura Room
+     * @param heating energia ogrzewania Room
+     * @param light moc oświetlenia Room
      * @return true - jeżeli dodanie obiektu do schematu powiedzie się; false - w przeciwnym razie.
      */
     public boolean addLocation(int id, String name, int parent_id, float area, float cube, float heating, float light){
@@ -199,9 +199,9 @@ public class LocationController {
 
     /**
      * Dodaje Location do schematu, ale nie wymusza podawania wielu (zbędnych) argumentów.
-     * @param id - unikalny identyfikator
-     * @param name - opcjonalna nazwa
-     * @return true - jeżeli dodanie obiektu do schematu powiedzie się; false - w przeciwnym razie.
+     * @param id unikalny identyfikator
+     * @param name opcjonalna nazwa
+     * @return true jeżeli dodanie obiektu do schematu powiedzie się; false - w przeciwnym razie.
      */
     public boolean addLocation(int id, String name){
         LocationAdder  locationAdder = new LocationAdder(AllBuildings, id);
@@ -210,8 +210,8 @@ public class LocationController {
 
     /**
      * Dodaje Location do schematu, ale nie wymusza podawania wielu (zbędnych) argumentów. Name = null. Pola Room = -1. Parent_id = 0
-     * @param id - unikalny identyfikator
-     * @return true - jeżeli dodanie obiektu do schematu powiedzie się; false - w przeciwnym razie.
+     * @param id unikalny identyfikator
+     * @return true jeżeli dodanie obiektu do schematu powiedzie się; false - w przeciwnym razie.
      */
     public boolean addLocation(int id){
         LocationAdder  locationAdder = new LocationAdder(AllBuildings, id);
@@ -220,8 +220,8 @@ public class LocationController {
 
     /**
      * Dodaje Location do schematu, ale nie wymusza podawania wielu (zbędnych) argumentów. Name = null. Pola Room = -1
-     * @param id - unikalny identyfikator
-     * @param parent_id - id obiektu Location, w którym ma się znaleźć dodawany obiekt. Nie może to być id obiektu Room. Dla Building = 0
+     * @param id unikalny identyfikator
+     * @param parent_id id obiektu Location, w którym ma się znaleźć dodawany obiekt. Nie może to być id obiektu Room. Dla Building = 0
      * @return true - jeżeli dodanie obiektu do schematu powiedzie się; false - w przeciwnym razie.
      */
     public boolean addLocation(int id, int parent_id){
@@ -231,9 +231,9 @@ public class LocationController {
 
     /**
      * Dodaje Location do schematu, ale nie wymusza podawania wielu (zbędnych) argumentów. Pola Room = -1
-     * @param id - unikalny identyfikator
-     * @param name - opcjonalna nazwa
-     * @param parent_id - id obiektu Location, w którym ma się znaleźć dodawany obiekt. Nie może to być id obiektu Room. Dla Building = 0
+     * @param id unikalny identyfikator
+     * @param name opcjonalna nazwa
+     * @param parent_id id obiektu Location, w którym ma się znaleźć dodawany obiekt. Nie może to być id obiektu Room. Dla Building = 0
      * @return true - jeżeli dodanie obiektu do schematu powiedzie się; false - w przeciwnym razie.
      */
     public boolean addLocation(int id, String name, int parent_id){
@@ -243,7 +243,7 @@ public class LocationController {
 
     /**
      * Usuwa Location wraz z wszystkimi znajdującym się w niej Floor i Room.
-     * @param id - identyfikator obiektu do usunięcia
+     * @param id identyfikator obiektu do usunięcia
      * @return true - jeżeli usunięcie obiektu powiedzie się, false - w przeciwnym razie
      */
     public boolean removeLocation(int id){
@@ -253,7 +253,7 @@ public class LocationController {
 
     /**
      * Zwraca pole name obiektu Location
-     * @param id - identyfikator obiektu
+     * @param id identyfikator obiektu
      * @return nazwa Lokacji lub null, jeżeli Location o podanym id nie istnieje lub nazwa nie została podana
      */
     public String getName(int id){
@@ -263,8 +263,8 @@ public class LocationController {
 
     /**
      * Ustawia pole name obiektu Location
-     * @param id - identyfikator obiektu
-     * @param name - nazwa do nadania
+     * @param id identyfikator obiektu
+     * @param name nazwa do nadania
      * @return true - jeżeli nazwa zostanie nadana; false - w przeciwnym razie (np. gdy Location o takim id nie istnieje)
      */
     public boolean setName(int id, String name){
@@ -274,8 +274,8 @@ public class LocationController {
 
     /**
      * Zmienia id Location na inne.
-     * @param old_id - stary identyfikator Location
-     * @param new_id - nowy identyfikator Location
+     * @param old_id stary identyfikator Location
+     * @param new_id nowy identyfikator Location
      * @return true - jeżeli zmiana id się powiedzie; false - w przeciwnym razie
      */
     public boolean updateId(int old_id, int new_id){
@@ -285,8 +285,8 @@ public class LocationController {
 
     /**
      * Ustawia pole area w obiekcie Room.
-     * @param id - id obiektu Room
-     * @param area - wartość area do ustawienia
+     * @param id id obiektu Room
+     * @param area wartość area do ustawienia
      * @return true - jeżeli zmiana id się powiedzie; false - w przeciwnym razie (np. gdy podano id obiektu Floor lub Building, ale podano niestniejące id)
      */
     public boolean setArea(int id, float area){
@@ -296,8 +296,8 @@ public class LocationController {
 
     /**
      * Zwraca pole area obiektu Location. Dla Floor zwracana jest suma pól area wszystkich podrzędnych Room; dla Building zwracana jest suma pól area wszystkich podrzędnych Floor.
-     * @param id - identyfikator Location
-     * @return - powierzchnia obiektu Location o podanym id.
+     * @param id identyfikator Location
+     * @return powierzchnia obiektu Location o podanym id.
      */
     public float getArea(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
@@ -306,8 +306,8 @@ public class LocationController {
 
     /**
      * Ustawia pole cube w obiekcie Room.
-     * @param id - id obiektu Room
-     * @param cube - wartość cube do ustawienia
+     * @param id id obiektu Room
+     * @param cube wartość cube do ustawienia
      * @return true - jeżeli zmiana id się powiedzie; false - w przeciwnym razie (np. gdy podano id obiektu Floor lub Building, ale podano niestniejące id)
      */
     public boolean setCube(int id, float cube){
@@ -317,8 +317,8 @@ public class LocationController {
 
     /**
      * Zwraca pole cube obiektu Location. Dla Floor zwracana jest suma pól cube wszystkich podrzędnych Room; dla Building zwracana jest suma pól cube wszystkich podrzędnych Floor.
-     * @param id - identyfikator Location
-     * @return - kubatura obiektu Location o podanym id.
+     * @param id identyfikator Location
+     * @return kubatura obiektu Location o podanym id.
      */
     public float getCube(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
@@ -327,8 +327,8 @@ public class LocationController {
 
     /**
      * Ustawia pole heating w obiekcie Room.
-     * @param id - id obiektu Room
-     * @param heating - wartość heating do ustawienia
+     * @param id id obiektu Room
+     * @param heating wartość heating do ustawienia
      * @return true - jeżeli zmiana id się powiedzie; false - w przeciwnym razie (np. gdy podano id obiektu Floor lub Building, ale podano niestniejące id)
      */
     public boolean setHeating(int id, float heating){
@@ -338,8 +338,8 @@ public class LocationController {
 
     /**
      * Zwraca pole heating obiektu Location. Dla Floor zwracana jest suma pól heating wszystkich podrzędnych Room; dla Building zwracana jest suma pól heating wszystkich podrzędnych Floor.
-     * @param id - identyfikator Location
-     * @return - poziom zużycia energii obiektu Location o podanym id.
+     * @param id identyfikator Location
+     * @return poziom zużycia energii obiektu Location o podanym id.
      */
     public float getHeating(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
@@ -348,8 +348,8 @@ public class LocationController {
 
     /**
      * Ustawia pole light w obiekcie Room.
-     * @param id - id obiektu Room
-     * @param light - wartość light do ustawienia
+     * @param id id obiektu Room
+     * @param light wartość light do ustawienia
      * @return true - jeżeli zmiana id się powiedzie; false - w przeciwnym razie (np. gdy podano id obiektu Floor lub Building, ale podano niestniejące id)
      */
     public boolean setLight(int id, float light){
@@ -359,8 +359,8 @@ public class LocationController {
 
     /**
      * Zwraca pole light obiektu Location. Dla Floor zwracana jest suma pól light wszystkich podrzędnych Room; dla Building zwracana jest suma pól light wszystkich podrzędnych Floor.
-     * @param id - identyfikator Location
-     * @return - łączna moc oświetlenia obiektu Location o podanym id.
+     * @param id identyfikator Location
+     * @return łączna moc oświetlenia obiektu Location o podanym id.
      */
     public float getLight(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
@@ -369,8 +369,8 @@ public class LocationController {
 
     /**
      * Zwraca moc oświetlenia lokacji na metr kwadratowy.
-     * @param id - identyfikator Location.
-     * @return - moc oświetlenia obiektu Location podzielona przez jej powierzchnię.
+     * @param id identyfikator Location.
+     * @return moc oświetlenia obiektu Location podzielona przez jej powierzchnię.
      */
     public float getLightperM2(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
@@ -379,8 +379,8 @@ public class LocationController {
 
     /**
      * Zwraca energię potrzebną na ogrzanie Location podzieloną przez jej kubaturę.
-     * @param id - identyfikator Location.
-     * @return - energia ogrzewania podzielona przez kubaturę obiektu Location.
+     * @param id identyfikator Location.
+     * @return energia ogrzewania podzielona przez kubaturę obiektu Location.
      */
     public float getHeatingperM3(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
