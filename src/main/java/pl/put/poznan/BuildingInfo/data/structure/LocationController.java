@@ -173,7 +173,7 @@ public class LocationController {
     Location AllBuildings; // pseudo-lokacja - w niej znajdują się wszystkie budynki
 
     /**
-     * Konstruktor bezargumentowy. Tworzy pseudo-lokację, będącą 'korzeniem' schematu danych.
+     * Konstruktor bezargumentowy. Tworzy pseudo-lokację, będącą 'korzeniem' schematu danych. Ala ma kota
      * Jako children 'korzenia' figurują obiekty Building.
      * id 'korzenia' to 0, więc nie może to być id żadnej innej lokacji.
      */
