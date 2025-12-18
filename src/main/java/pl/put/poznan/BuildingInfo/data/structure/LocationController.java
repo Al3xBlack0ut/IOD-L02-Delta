@@ -105,7 +105,7 @@ class LocationDeleter{
 }
 
 /**
- * LocationUpdater - pomocnicza klasa wykonująca operację modyfikacji na zbiorze danych.
+ * LocationUpdater - pomocnicza klasa wykonująca operację modyfikacji na zbiorze danych. Ala Ma kota
  *
  * @author PiotrRem
  */
