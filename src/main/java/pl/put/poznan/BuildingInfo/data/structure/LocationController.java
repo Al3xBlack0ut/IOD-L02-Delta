@@ -164,7 +164,7 @@ class LocationUpdater{
 
 /**
  * LocationController - klasa do obsługi hierarchicznego modelu danych:
- * (korzeń)->Buiding->Floor->Room
+ * (korzeń)- Buiding- Floor- Room
  * LocationController służy do uzyskiwania danych ze schematu, ich wstawiania, modyfikacji i usuwania.
  *
  * @author PiotrRem
