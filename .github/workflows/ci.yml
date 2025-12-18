@@ -23,7 +23,7 @@ jobs:
         cache: 'maven'
     
     - name: Build with Maven
-      run: mvn package
+      run: mvn clean verify -U
     
     - name: Run tests
       run: mvn test
