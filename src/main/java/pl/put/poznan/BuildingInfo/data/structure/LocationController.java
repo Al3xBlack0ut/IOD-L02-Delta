@@ -3,7 +3,7 @@ package pl.put.poznan.BuildingInfo.data.structure;
 import java.util.ArrayList;
 
 /**
- * LocationSelecter - pomocnicza klasa wykonująca operację selekcji na zbiorze danych. Ala Makota
+ * LocationSelecter - pomocnicza klasa wykonująca operację selekcji na zbiorze danych. Ala Ma kota
  *
  * @author PiotrRem 
  */
