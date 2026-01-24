@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.put.poznan.BuildingInfo.data.structure.LocationController;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LocationControllerTest {
@@ -500,5 +502,83 @@ class LocationControllerTest {
         assertEquals(0.0f, locationController.getLight(2));
         assertEquals(0.0f, locationController.getLight(3));
         assertEquals(0.0f, locationController.getLight(4));
+    }
+
+    @Test
+    void testGetLocationListByName1(){
+        assertTrue(locationController.addLocation(1, "Sejm"));
+        List<Integer> IDs = locationController.getLocationListByName("Sejm");
+        assertTrue(IDs.contains(1));
+    }
+
+    @Test
+    void testGetLocationListByName2(){
+        assertTrue(locationController.addLocation(1, "Sejm"));
+        assertTrue(locationController.addLocation(2, 1));
+        assertTrue(locationController.addLocation(3, "Pokoj", 2));
+        assertTrue(locationController.addLocation(4, "Pokoj", 2));
+        List<Integer> IDs = locationController.getLocationListByName("Pokoj");
+        assertTrue(IDs.contains(3));
+        assertTrue(IDs.contains(4));
+    }
+
+    @Test
+    void testGetLocationListByHeatingPerCube1(){
+        assertTrue(locationController.addLocation(1));
+        assertTrue(locationController.addLocation(2, 1));
+        assertTrue(locationController.addLocation(3, 2));
+        assertTrue(locationController.setCube(3, 10.0f));
+        assertTrue(locationController.setHeating(3, 10.0f));
+        List<Integer> IDs = locationController.getLocationListByHeatingPerCube(1.0f);
+        assertTrue(IDs.isEmpty());
+        IDs = locationController.getLocationListByHeatingPerCube(0.9f);
+        assertTrue(IDs.contains(3));
+        assertTrue(IDs.contains(2));
+        assertTrue(IDs.contains(1));
+        assertTrue(IDs.contains(0));
+        assertTrue(IDs.size() == 4);
+    }
+
+    @Test
+    void testGetLocationListByHeatingPerCube2(){
+        assertTrue(locationController.addLocation(1));
+        assertTrue(locationController.addLocation(10, 1));
+        assertTrue(locationController.addLocation(11, 10));
+        assertTrue(locationController.addLocation(12, 10));
+        assertTrue(locationController.addLocation(13, 10));
+        assertTrue(locationController.addLocation(20, 1));
+        assertTrue(locationController.addLocation(21, 20));
+        assertTrue(locationController.addLocation(22, 20));
+        assertTrue(locationController.addLocation(30, 1));
+        assertTrue(locationController.addLocation(100, 0));
+        assertTrue(locationController.addLocation(110, 100));
+        assertTrue(locationController.addLocation(111, 110));
+
+        assertTrue(locationController.setCube(11, 10.0f));
+        assertTrue(locationController.setCube(12, 10.0f));
+        assertTrue(locationController.setCube(13, 10.0f));
+        assertTrue(locationController.setCube(21, 10.0f));
+        assertTrue(locationController.setCube(22, 10.0f));
+        assertTrue(locationController.setCube(111, 10.0f));
+
+        assertTrue(locationController.setHeating(11, 9.0f));
+        assertTrue(locationController.setHeating(12, 20.0f));
+        assertTrue(locationController.setHeating(13, 20.0f));
+        assertTrue(locationController.setHeating(21, 12.5f));
+        assertTrue(locationController.setHeating(22, 10.0f));
+        assertTrue(locationController.setHeating(111, 11.0f));
+
+        List<Integer> IDs = locationController.getLocationListByHeatingPerCube(1.0f);
+        assertTrue(IDs.contains(0));
+        assertTrue(IDs.contains(1));
+        assertTrue(IDs.contains(10));
+        assertTrue(IDs.contains(12));
+        assertTrue(IDs.contains(13));
+        assertTrue(IDs.contains(20));
+        assertTrue(IDs.contains(21));
+        assertTrue(IDs.contains(111));
+        assertTrue(IDs.contains(110));
+        assertTrue(IDs.contains(100));
+        assertTrue(IDs.size() == 10);
     }
 }

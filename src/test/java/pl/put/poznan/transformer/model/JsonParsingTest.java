@@ -15,6 +15,7 @@ class JsonParsingTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+
     @Test
     void testTransformRequestParsing() throws Exception {
         // JSON który przychodzi z requesta
@@ -33,6 +34,8 @@ class JsonParsingTest {
         assertEquals("capitalize", request.getTransforms().get(2));
     }
 
+
+
     @Test
     void testTransformRequestSerialization() throws Exception {
         // Tworzymy obiekt
@@ -48,6 +51,8 @@ class JsonParsingTest {
         assertTrue(json.contains("\"transforms\":[\"upper\",\"escape\"]"));
     }
 
+
+
     @Test
     void testTransformResponseParsing() throws Exception {
         // JSON z odpowiedzią
@@ -60,6 +65,8 @@ class JsonParsingTest {
         assertNotNull(response);
         assertEquals("PRZEKSZTAŁCONY TEKST", response.getTransformedText());
     }
+
+
 
     @Test
     void testTransformResponseSerialization() throws Exception {
@@ -74,6 +81,8 @@ class JsonParsingTest {
         assertTrue(json.contains("\"transformedText\":\"wynik transformacji\""));
     }
 
+
+
     @Test
     void testEmptyTransformsList() throws Exception {
         // Test z pustą listą transformacji
@@ -86,6 +95,8 @@ class JsonParsingTest {
         assertNotNull(request.getTransforms());
         assertEquals(0, request.getTransforms().size());
     }
+
+
 
     @Test
     void testNullHandling() throws Exception {
