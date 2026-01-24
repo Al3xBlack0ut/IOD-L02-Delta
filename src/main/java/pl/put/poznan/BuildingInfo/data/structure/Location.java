@@ -15,7 +15,7 @@ class Location {
     enum LocationType{
         Root, Building, Floor, Room, INVALID;
 
-        public LocationType next(){
+        LocationType next(){
             switch (this){
                 case Root:
                     return LocationType.Building;
@@ -39,8 +39,8 @@ class Location {
     protected float heating;                             // poziom zużycia energii ogrzewania
     protected float light;                               // łączna moc oświetlenia
 
-    public Location() {this.children = new HashSet<>(); this.type = LocationType.Root;}
-    public Location(int id, String name){this.id = id;this.name = name; this.children = new HashSet<>();this.type = LocationType.Root;}
+    Location() {this.children = new HashSet<>(); this.type = LocationType.Root;}
+    Location(int id, String name){this.id = id;this.name = name; this.children = new HashSet<>();this.type = LocationType.Root;}
 
     protected Location findLocationByIdUtil(int sought_id,  Location location){
         if(sought_id == location.id){
@@ -96,19 +96,19 @@ class Location {
         this.name = name;
     }
 
-    public boolean setArea(float area){
+    boolean setArea(float area){
         if(type!=LocationType.Room) return false;
         this.area = area;
         return true;
     }
 
-    public boolean setCube(float cube){
+    boolean setCube(float cube){
         if(type!=LocationType.Room) return false;
         this.cube = cube;
         return true;
     }
 
-    public boolean setHeating(float heating){
+    boolean setHeating(float heating){
         if(type!=LocationType.Room) return false;
         this.heating = heating;
         return true;
@@ -146,7 +146,7 @@ class Location {
         return result;
     }
 
-    private void deleteCascade(Location location){
+    protected void deleteCascade(Location location){
         for (Location child : new ArrayList<>(location.children)) {
             deleteCascade(child);
         }
@@ -163,36 +163,69 @@ class Location {
         }
     }
 
-    public float getArea(){
+    float getArea(){
         Map<String, Float> stats = getSublocationStatsCascade(this);
         return  stats.get("area");
     }
 
-    public float getCube(){
+    float getCube(){
         Map<String, Float> stats = getSublocationStatsCascade(this);
         return  stats.get("cube");
     }
 
-    public float getHeating(){
+    float getHeating(){
         Map<String, Float> stats = getSublocationStatsCascade(this);
         return  stats.get("heating");
     }
 
-    public float getLight(){
+    float getLight(){
         Map<String, Float> stats = getSublocationStatsCascade(this);
         return  stats.get("light");
     }
-    public String getName(){
-        return  name;
+
+    protected void findLocationByNameUtil(String sought_name,  Location location, List<Location> result){
+        if(sought_name.equals(location.name)){
+            result.add(location);
+        }
+        for(Location child : location.children) findLocationByNameUtil(sought_name, child, result);
     }
-    public float getLightperM2(){
-        return this.getLight()/this.getArea();
+
+    List<Location> findLocationByName(String sought_name){
+        List<Location> result = new ArrayList<>();
+        findLocationByNameUtil(sought_name, this, result);
+        return result;
     }
-    public float getHeatingperM3(){
-        return this.getHeating()/this.getCube();
+
+    protected float[] findLocationByHeatingPerCubeUtil(float threshold,  Location location, List<Location> result){
+        float[] heating_cube = new float[2];
+
+        if(location.type == LocationType.Room) {
+            heating_cube[0] = location.heating;
+            heating_cube[1] = location.cube;
+        }
+        else{
+            heating_cube[0] = 0;
+            heating_cube[1] = 0;
+            for(Location child : location.children){
+                float[] x = findLocationByHeatingPerCubeUtil(threshold, child, result);
+                heating_cube[0] += x[0];
+                heating_cube[1] += x[1];
+            }
+        }
+
+        if(heating_cube[1] != 0 && threshold < heating_cube[0] / heating_cube[1]){
+            result.add(location);
+        }
+        return heating_cube;
     }
-    public int getId()
-    {
+
+    List<Location> findLocationByHeatingPerCube(float threshold){
+        List<Location> result = new ArrayList<>();
+        findLocationByHeatingPerCubeUtil(threshold, this, result);
+        return result;
+    }
+
+    public int getId(){
         return id;
     }
 }

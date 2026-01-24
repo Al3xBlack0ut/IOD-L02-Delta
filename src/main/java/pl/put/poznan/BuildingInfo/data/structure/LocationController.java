@@ -1,6 +1,7 @@
 package pl.put.poznan.BuildingInfo.data.structure;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * LocationSelecter - pomocnicza klasa wykonująca operację selekcji na zbiorze danych. Ala Ma kota
@@ -385,5 +386,30 @@ public class LocationController {
     public float getHeatingperM3(int id){
         LocationSelecter locationSelecter = new LocationSelecter(AllBuildings, id);
         return locationSelecter.getHeatingperM3();
+    }
+
+    /**
+     * Zwraca listę identyfikatorów lokacji, które mają nazwę równej podanej jako parametr.
+     * @param name nazwa lokacji do wyszukania.
+     * @return lista id budynków, poziomów i pomieszczeń, które noszą podaną nazwę.
+     */
+    public List<Integer> getLocationListByName(String name){
+        List<Integer> result = new ArrayList<>();
+        List<Location> locations = AllBuildings.findLocationByName(name);
+        for(Location location : locations) result.add(location.getId());
+        return result;
+    }
+
+    /**
+     * Zwraca listę identyfikatorów lokacji, które przekraczają podany jako parametr poziom zużycia energii cieplnej na m^3 kubatury.
+     * Jeżeli lista zawiera id = 0, to dla wszystkich pomieszczeń we wszystkich budynkach przekroczony jest ów próg.
+     * @param threshold zużycie energii cieplnej na m^3 kubatury, powyżej którego szukamy lokacji.
+     * @return lista identyfikatorów budynków, poziomów i pomieszczeń, które przekraczają podany próg zużycia energii na m^3.
+     */
+    public List<Integer> getLocationListByHeatingPerCube(float threshold){
+        List<Integer> result = new ArrayList<>();
+        List<Location> locations = AllBuildings.findLocationByHeatingPerCube(threshold);
+        for(Location location : locations) result.add(location.getId());
+        return result;
     }
 }
