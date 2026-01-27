@@ -15,6 +15,11 @@ public class TransformRequest {
     private float heating;
     private String name;
     private String type;
+
+    // Fields for text transformation (for test compatibility)
+    private String text;
+    private java.util.List<String> transforms;
+
     public TransformRequest() {
     }
 
@@ -27,6 +32,12 @@ public class TransformRequest {
         this.heating = heating;
         this.name=name;
         this.type=type;
+    }
+
+    // Constructor for test compatibility
+    public TransformRequest(String text, java.util.List<String> transforms) {
+        this.text = text;
+        this.transforms = transforms;
     }
 
 
@@ -54,6 +65,20 @@ public class TransformRequest {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    // Setters and getters for test compatibility
+    public void setText(String text) {
+        this.text = text;
+    }
+    public void setTransforms(java.util.List<String> transforms) {
+        this.transforms = transforms;
+    }
+    public String getText() {
+        return text;
+    }
+    public java.util.List<String> getTransforms() {
+        return transforms;
     }
 
     public int getId() {
@@ -88,7 +113,9 @@ public class TransformRequest {
     public String toString() {
         return "TransformRequest{" +
                 "id='" + Integer.toString(id) + '\'' +
-                ", transforms=" + name +
+                ", name='" + name + '\'' +
+                ", text='" + text + '\'' +
+                ", transforms=" + transforms +
                 '}';
     }
 }

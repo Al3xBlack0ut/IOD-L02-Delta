@@ -10,32 +10,44 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Set up JDK 11
       uses: actions/setup-java@v4
       with:
         java-version: '11'
         distribution: 'temurin'
         cache: 'maven'
-    
+
     - name: Build with Maven
       run: mvn clean verify -U
-    
+
     - name: Run tests
       run: mvn test
-    
+
+    - name: Upload JAR
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-jar
+        path: target/*.jar
+
+    - name: Upload Javadoc
+      uses: actions/upload-artifact@v4
+      with:
+        name: javadoc
+        path: target/site/apidocs/
+
     - name: Create Issue and notify team on failure
       if: failure()
       uses: actions/github-script@v7
       with:
         script: |
-          const issue = await github.rest.issues. create({
-            owner: context. repo. owner,
-            repo: context. repo.repo,
+          const issue = await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
             title: 'CI Build Failed - ' + context.sha.substring(0, 7),
             body: `## Build nie powiódł się! 
             
@@ -50,7 +62,7 @@ jobs:
             - **Job:** ${context.job}
             
             ### Zobacz logi:
-            [Kliknij tutaj aby zobaczyć pełne logi](${context.serverUrl}/${context.repo.owner}/${context. repo.repo}/actions/runs/${context.runId})
+            [Kliknij tutaj aby zobaczyć pełne logi](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})
             
             ### Powiadomiono:
             - @Al3xBlack0ut
@@ -70,21 +82,21 @@ jobs:
           
           console.log('Issue utworzony:', issue.data.html_url);
           console.log('Email wysłany do przypisanych osób');
-    
+
     - name: Close failure issues on success
       if: success()
       uses: actions/github-script@v7
       with:
         script: |
-          const issues = await github.rest. issues. listForRepo({
+          const issues = await github.rest.issues.listForRepo({
             owner: context.repo.owner,
             repo: context.repo.repo,
             state: 'open',
             labels: 'ci-failure'
           });
           
-          for (const issue of issues. data) {
-            await github. rest.issues.createComment({
+          for (const issue of issues.data) {
+            await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue.number,
