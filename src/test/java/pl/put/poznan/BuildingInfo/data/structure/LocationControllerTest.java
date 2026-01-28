@@ -235,6 +235,7 @@ class LocationControllerTest {
         assertTrue(locationController.addLocation(3, 2));
         assertTrue(locationController.setArea(3, 10.0f));
         assertEquals(-1.0f, locationController.getArea(4));
+
         assertEquals(10.0f, locationController.getArea(3));
         assertEquals(10.0f, locationController.getArea(2));
         assertEquals(10.0f, locationController.getArea(1));
@@ -299,11 +300,13 @@ class LocationControllerTest {
 
     @Test
     void testGetCube1(){
+
         assertTrue(locationController.addLocation(1));
         assertTrue(locationController.addLocation(2, 1));
         assertTrue(locationController.addLocation(3, 2));
         assertTrue(locationController.setCube(3, 10.0f));
         assertEquals(-1.0f, locationController.getCube(4));
+
         assertEquals(10.0f, locationController.getCube(3));
         assertEquals(10.0f, locationController.getCube(2));
         assertEquals(10.0f, locationController.getCube(1));
@@ -312,6 +315,7 @@ class LocationControllerTest {
 
     @Test
     void testGetCube2(){
+
         assertTrue(locationController.addLocation(1));
         assertTrue(locationController.addLocation(10, 1));
         assertTrue(locationController.addLocation(11, 10));
@@ -368,6 +372,7 @@ class LocationControllerTest {
 
     @Test
     void testGetHeating1(){
+
         assertTrue(locationController.addLocation(1));
         assertTrue(locationController.addLocation(2, 1));
         assertTrue(locationController.addLocation(3, 2));
@@ -437,6 +442,7 @@ class LocationControllerTest {
 
     @Test
     void testGetLight1(){
+
         assertTrue(locationController.addLocation(1));
         assertTrue(locationController.addLocation(2, 1));
         assertTrue(locationController.addLocation(3, 2));
