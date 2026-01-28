@@ -21,13 +21,13 @@ public class BuildingInfo {
     public void insert(int id,TransformRequest location)
     {
         //if(location.getParentId()!=-1)
-        if((location.getType()).equals("Room"))
+        //if((location.getType()).equals("Room"))
         {
 
             lokacje.addLocation(id,location.getName(),location.getParentId(),location.getArea(),location.getCube(),location.getHeating(),location.getLight());
         }
-        else
-            lokacje.addLocation(id,location.getName(),location.getParentId());
+        //else
+          //  lokacje.addLocation(id,location.getName(),location.getParentId());
         /*else
         {
             lokacje.addLocation(id,location.getName());

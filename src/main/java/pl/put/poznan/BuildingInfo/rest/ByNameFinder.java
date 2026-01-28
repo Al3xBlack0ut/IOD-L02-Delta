@@ -12,13 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/name")
 public class ByNameFinder {
-    private final BuildingInfo baza = new BuildingInfo();
-
     @GetMapping(produces = "application/json")
-    public ResponseEntity<List<Integer>> getRoomIdsByName(
-            @RequestParam("name") String roomName) {
-
-        List<Integer> ids = baza.getRoomIdsByName(roomName);
+    public ResponseEntity<List<Integer>> getRoomIdsByName(@RequestParam("name") String roomName) {
+        List<Integer> ids = BuildingInfoController.baza.getRoomIdsByName(roomName);
         return ResponseEntity.ok(ids);
     }
 }

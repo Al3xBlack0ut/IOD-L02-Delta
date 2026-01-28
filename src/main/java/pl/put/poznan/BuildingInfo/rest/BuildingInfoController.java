@@ -12,7 +12,7 @@ import pl.put.poznan.transformer.model.TransformResponse;
 public class BuildingInfoController {
 
     private static final Logger logger = LoggerFactory.getLogger(BuildingInfoController.class);
-    private BuildingInfo baza=new BuildingInfo();
+    static BuildingInfo baza=new BuildingInfo();
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     //public float get(@PathVariable int id,
      //                         @RequesatParam(value="operacje") String transform) {
