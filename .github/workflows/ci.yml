@@ -22,34 +22,17 @@ jobs:
         distribution: 'temurin'
         cache: 'maven'
 
-
-    - name: Build with Maven
-      run: mvn clean verify -U
-
-    - name: Run tests
-      run: mvn test
+    - name: Build project and package JAR
+      run: mvn clean package -U
 
     - name: Generate Javadoc
       run: mvn javadoc:javadoc
-
-    - name: Commit and push target/ to main
-      if: github.ref == 'refs/heads/main' && success()
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add target/
-        if ! git diff --cached --quiet; then
-          git commit -m "Update build artifacts (target/) [ci skip]"
-          git push origin main
-        else
-          echo "No build artifact changes to commit."
-        fi
 
     - name: Upload JAR
       uses: actions/upload-artifact@v4
       with:
         name: app-jar
-        path: target/*.jar
+        path: target/*-spring-boot.jar   # <- fat/executable JAR Spring Boot
 
     - name: Upload Javadoc
       uses: actions/upload-artifact@v4

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * LocationSelecter - pomocnicza klasa wykonująca operację selekcji na zbiorze danych. Ala Ma kota
+ * LocationSelecter - pomocnicza klasa wykonująca operację selekcji na zbiorze danych.
  *
  * @author PiotrRem 
  */
@@ -167,7 +167,8 @@ class LocationUpdater{
  * LocationController - klasa do obsługi hierarchicznego modelu danych:
  * (korzeń)- Buiding- Floor- Room
  * LocationController służy do uzyskiwania danych ze schematu, ich wstawiania, modyfikacji i usuwania.
- *
+ * Ala Ma kota
+ * 
  * @author PiotrRem
  */
 public class LocationController {
