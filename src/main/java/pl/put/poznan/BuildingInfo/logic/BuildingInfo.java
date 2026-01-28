@@ -80,4 +80,7 @@ public class BuildingInfo {
     public List<Integer> getRoomIdsByName(String name){
         return lokacje.getLocationListByName(name);
     }
+    public List<Integer> getRoomIdsByHeatingPerCube(float threshold){
+        return lokacje.getLocationListByHeatingPerCube(threshold);
+    }
 }

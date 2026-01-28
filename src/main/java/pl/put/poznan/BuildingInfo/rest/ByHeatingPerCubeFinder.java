@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/name")
-public class ByNameFinder {
+@RequestMapping("/heatingm3")
+public class ByHeatingPerCubeFinder {
     @GetMapping(produces = "application/json")
-    public ResponseEntity<List<Integer>> getRoomIdsByName(@RequestParam("name") String roomName) {
-        List<Integer> ids = BuildingInfoController.baza.getRoomIdsByName(roomName);
+    public ResponseEntity<List<Integer>> getLocationsOverThreshold(@RequestParam("threshold") float threshold) {
+        List<Integer> ids = BuildingInfoController.baza.getRoomIdsByHeatingPerCube(threshold);
         return ResponseEntity.ok(ids);
     }
 }
