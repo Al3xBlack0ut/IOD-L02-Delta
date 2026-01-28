@@ -28,10 +28,27 @@ jobs:
     - name: Generate Javadoc
       run: mvn javadoc:javadoc
 
+    - name: Create tag
+      id: tag
+      run: |
+        # Wersja release, np. v1.0.0 – zmień według potrzeb
+        TAG_NAME="v1.0.0"
+        
+        # Sprawdź, czy tag już istnieje
+        if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+          echo "Tag $TAG_NAME already exists"
+        else
+          git tag -a $TAG_NAME -m "Release $TAG_NAME"
+          git push origin $TAG_NAME
+          echo "Created tag $TAG_NAME"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Upload JAR to GitHub Release
       uses: softprops/action-gh-release@v2
-      if: github.ref == 'refs/heads/main'
       with:
+        tag_name: v1.0.0
         files: target/*-spring-boot.jar
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
