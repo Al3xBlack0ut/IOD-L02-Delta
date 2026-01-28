@@ -1,2 +1,5 @@
-pl/put/poznan/BuildingInfo/data/structure/LocationControllerTest.class
+pl/put/poznan/BuildingInfo/data/structure/LocationDeleterTest.class
 pl/put/poznan/transformer/model/JsonParsingTest.class
+pl/put/poznan/BuildingInfo/data/structure/LocationSelecterTest.class
+pl/put/poznan/BuildingInfo/data/structure/LocationAdderTest.class
+pl/put/poznan/BuildingInfo/data/structure/LocationControllerTest.class
