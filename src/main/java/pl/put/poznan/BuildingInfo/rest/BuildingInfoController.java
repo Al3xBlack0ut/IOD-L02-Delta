@@ -3,11 +3,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.BuildingInfo.logic.BuildingInfo;
-import pl.put.poznan.BuildingInfo.data.structure.LocationController;
 import pl.put.poznan.transformer.model.TransformRequest;
 import pl.put.poznan.transformer.model.TransformResponse;
-import java.util.Arrays;
-import java.util.ArrayList;
 
 
 @RestController

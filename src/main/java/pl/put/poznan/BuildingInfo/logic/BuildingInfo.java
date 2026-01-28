@@ -3,6 +3,8 @@ import pl.put.poznan.BuildingInfo.data.structure.LocationController;
 import pl.put.poznan.transformer.model.TransformRequest;
 import pl.put.poznan.transformer.model.TransformResponse;
 import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This is just an example to show that the logic should be outside the REST service.
  */
@@ -74,5 +76,8 @@ public class BuildingInfo {
             }
             TransformResponse result=new TransformResponse(wynik);
         return result;
+    }
+    public List<Integer> getRoomIdsByName(String name){
+        return lokacje.getLocationListByName(name);
     }
 }
