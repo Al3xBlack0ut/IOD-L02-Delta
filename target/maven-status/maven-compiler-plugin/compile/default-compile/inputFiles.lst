@@ -1,5 +1,7 @@
+/home/runner/work/IOD-L02-Delta/IOD-L02-Delta/src/main/java/pl/put/poznan/BuildingInfo/rest/ByNameFinder.java
 /home/runner/work/IOD-L02-Delta/IOD-L02-Delta/src/main/java/pl/put/poznan/BuildingInfo/data/structure/Floor.java
 /home/runner/work/IOD-L02-Delta/IOD-L02-Delta/src/main/java/pl/put/poznan/BuildingInfo/data/structure/Location.java
+/home/runner/work/IOD-L02-Delta/IOD-L02-Delta/src/main/java/pl/put/poznan/BuildingInfo/rest/ByHeatingPerCubeFinder.java
 /home/runner/work/IOD-L02-Delta/IOD-L02-Delta/src/main/java/pl/put/poznan/BuildingInfo/logic/BuildingInfo.java
 /home/runner/work/IOD-L02-Delta/IOD-L02-Delta/src/main/java/pl/put/poznan/BuildingInfo/rest/BuildingInfoController.java
 /home/runner/work/IOD-L02-Delta/IOD-L02-Delta/src/main/java/pl/put/poznan/BuildingInfo/data/structure/LocationController.java

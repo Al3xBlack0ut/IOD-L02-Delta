@@ -1,5 +1,7 @@
 pl/put/poznan/BuildingInfo/data/structure/LocationDeleter.class
+pl/put/poznan/BuildingInfo/rest/ByHeatingPerCubeFinder.class
 pl/put/poznan/BuildingInfo/data/structure/Room.class
+pl/put/poznan/BuildingInfo/rest/ByNameFinder.class
 pl/put/poznan/transformer/model/TransformRequest.class
 pl/put/poznan/BuildingInfo/data/structure/LocationSelecter.class
 pl/put/poznan/BuildingInfo/app/BuildingInfoApplication.class
