@@ -106,7 +106,7 @@ class LocationDeleter{
 }
 
 /**
- * LocationUpdater - pomocnicza klasa wykonująca operację modyfikacji na zbiorze danych. Ala Ma kota
+ * LocationUpdater - pomocnicza klasa wykonująca operację modyfikacji na zbiorze danych. 
  *
  * @author PiotrRem
  */
@@ -167,7 +167,6 @@ class LocationUpdater{
  * LocationController - klasa do obsługi hierarchicznego modelu danych:
  * (korzeń)- Buiding- Floor- Room
  * LocationController służy do uzyskiwania danych ze schematu, ich wstawiania, modyfikacji i usuwania.
- * Ala Ma kota
  * 
  * @author PiotrRem
  */
@@ -175,8 +174,7 @@ public class LocationController {
     Location AllBuildings; // pseudo-lokacja - w niej znajdują się wszystkie budynki
 
     /**
-     * Ala ma kota124
-     * Konstruktor bezargumentowy. Tworzy pseudo-lokację, będącą 'korzeniem' schematu danych. Ala ma kota
+     * Konstruktor bezargumentowy. Tworzy pseudo-lokację, będącą 'korzeniem' schematu danych. 
      * Jako children 'korzenia' figurują obiekty Building.
      * id 'korzenia' to 0, więc nie może to być id żadnej innej lokacji.
      */
